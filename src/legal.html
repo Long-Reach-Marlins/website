@@ -9,8 +9,8 @@
   <body>
     <header class="site-header">
       <div class="wrap header-inner">
-        <a class="brand" href="index.html">
-          <img src="./assets/lrm.png" alt="Long Reach Marlins logo" class="logo" width="48" height="48" />
+        <a class="brand" href="/">
+          <img src="./assets/lrm.png" alt="Long Reach Marlins logo" class="logo" width="56" height="56" />
           <span class="org-name">Long Reach Marlins</span>
         </a>
         <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">Menu</button>
@@ -43,17 +43,10 @@
           extent permitted by law. Donors should consult with a tax advisor for guidance on their specific situation.
         </p>
 
-        <h2>Required Disclosures</h2>
-        <p>
-          Some states require additional disclosures for charitable solicitations (for example, registration numbers). If your state
-          requires a disclosure, please contact us at <a href="mailto:info@example.org">info@example.org</a> and we will provide the
-          information you need. We recommend consulting with an attorney or CPA to confirm compliance for fundraising activities.
-        </p>
-
         <h2>Maryland registration</h2>
         <p>
           Long Reach Marlins, Inc. is registered with the State of Maryland. You can search for our entry on the Maryland Business
-          Express site: <a href="https://egov.maryland.gov/BusinessExpress/EntitySearch/Business" target="_blank" rel="noopener">Maryland Business Express — Entity Search</a>.
+          Express site: <a href="https://egov.maryland.gov/BusinessExpress/EntitySearch/Search" target="_blank" rel="noopener">Maryland Business Express — Entity Search</a>.
         </p>
         <p>
           Department ID Number: <strong>D25984212</strong>
@@ -108,11 +101,12 @@
     <footer class="site-footer">
       <div class="wrap">
         <p>&copy; <span id="yearLegal"></span> Long Reach Marlins, Inc.</p>
+        <p class="nonprofit">Long Reach Marlins, Inc. is a 501(c)(3) nonprofit organization. Contributions are tax-deductible to the extent permitted by law. EIN: <strong>33-4144582</strong></p>
+        <p class="nonprofit small">Maryland Department ID: <strong>D25984212</strong> — registered with the State of Maryland (search on Maryland Business Express).</p>
+        <p class="nonprofit small">Verify our federal tax-exempt status at the IRS: <a href="https://apps.irs.gov/app/eos/" target="_blank" rel="noopener">IRS Tax Exempt Organization Search</a> (use EIN 33-4144582).</p>
       </div>
     </footer>
 
-    <script>
-      document.getElementById('yearLegal').textContent = new Date().getFullYear();
-    </script>
+    <script src="./js/main.js" defer></script>
   </body>
 </html>
