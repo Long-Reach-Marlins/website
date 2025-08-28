@@ -1,8 +1,6 @@
 // Small interactive helpers: nav toggle and dynamic year
 (() => {
-  const year = new Date().getFullYear();
-  document.getElementById('year')?.textContent = year;
-  document.getElementById('yearLegal')?.textContent = year;
+  document.getElementById('year').textContent = new Date().getFullYear();
 
   const navToggle = document.getElementById('navToggle');
   const mainNav = document.getElementById('mainNav');
