@@ -1,14 +1,23 @@
 /* Basic responsive styles for Long Reach Marlins */
 :root{
-  --accent:#0077b6;
+  /* Primary accent used for links and buttons. Darkened to improve contrast for accessibility */
+  --accent:#064e44; /* rgb(6,78,68) */
+  --accent-dark:#033b33;
+  /* Link colors: chosen to contrast with both white background and the site's body text color (#111) */
+  --link-color:#0b66c3; /* stronger, saturated blue for clearer contrast */
+  --link-dark:#054a8a;
+  --accent-rgb: 6,78,68;
   --muted:#666;
-  --wrap:1200px;
+  /* Softer text colors to reduce harsh black; headings slightly darker than body for hierarchy */
+  --text-color: #222222;
+  --heading-color: #161616;
+  --wrap:1000px;
 }
 *{box-sizing:border-box}
 *{box-sizing:border-box}
 /* Always show a vertical scrollbar to avoid layout jump when pages are short */
 html{overflow-y:scroll}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.5;margin:0;color:#111}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.5;margin:0;color:var(--text-color)}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:1rem}
 .site-header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:40}
 .header-inner{display:flex;align-items:center;gap:1rem}
@@ -21,12 +30,30 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-he
 .nav-toggle{display:none;background:none;border:1px solid #ddd;padding:.4rem .6rem;border-radius:6px}
 .main-nav{margin-left:auto}
 .main-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem}
-.main-nav a{text-decoration:none;color:var(--muted)}
-.hero{background:linear-gradient(180deg, rgba(0,119,182,0.08), transparent);padding:3rem 0;text-align:center}
+/* Nav links should follow the global link treatment for contrast; padding retained for tap targets */
+.main-nav a{text-decoration:none;color:var(--link-color);padding:.4rem .6rem;border-radius:6px;display:inline-block}
+
+/* Delineate menu items with a subtle divider for horizontal layout */
+.main-nav li{display:flex;align-items:center}
+.main-nav li + li{margin-left:0.5rem;padding-left:0.75rem;border-left:1px solid #eee}
+
+
+/* Global link styles: keep the same color for normal and visited links, and a subtle darker shade on hover/focus */
+a { color: var(--link-color); text-decoration: none; text-decoration-color: var(--link-color); text-underline-offset: 2px; font-weight:500; transition: color .12s ease-in-out; }
+a:visited { color: var(--link-color); }
+a:hover, a:focus { color: var(--link-dark); text-decoration-color: var(--link-dark); text-decoration: underline; }
+
+/* Accessible focus ring for keyboard users */
+a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.14);
+  border-radius: 6px;
+}
 
 /* Use the same subtle shaded background on the legal page to match the index hero */
-.legal{background:linear-gradient(180deg, rgba(0,119,182,0.08), transparent)}
 .hero h1{font-size:clamp(1.6rem,4vw,2.4rem);margin:.2rem 0}
+/* Heading styles: softer color and slightly reduced weight for a gentler appearance */
+h1,h2,h3,h4,h5,h6{color:var(--heading-color);font-weight:600;line-height:1.2}
 .lead{color:var(--muted)}
 .btn{display:inline-block;background:var(--accent);color:#fff;padding:.6rem 1rem;border-radius:6px;text-decoration:none}
 section{padding:2rem 0}
@@ -45,3 +72,5 @@ section{padding:2rem 0}
 /* When nav is open (toggled by JS) */
 .main-nav.open{display:block;position:absolute;left:0;right:0;top:64px;background:#fff;padding:1rem;border-bottom:1px solid #eee}
 .main-nav.open ul{flex-direction:column}
+/* In the stacked mobile menu, use top borders instead of left borders for separation */
+.main-nav.open li + li{border-left: none;margin-left:0;padding-left:0;border-top:1px solid #eee;padding-top:.6rem;margin-top:.6rem}
