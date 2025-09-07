@@ -9,8 +9,8 @@
   --accent-rgb: 6,78,68;
   --muted:#666;
   /* Softer text colors to reduce harsh black; headings slightly darker than body for hierarchy */
-  --text-color: #222222;
-  --heading-color: #161616;
+  --text-color: #333333;
+  --heading-color: #222222;
   --wrap:1000px;
 }
 *{box-sizing:border-box}
@@ -58,7 +58,7 @@ h1,h2,h3,h4,h5,h6{color:var(--heading-color);font-weight:600;line-height:1.2}
 .btn{display:inline-block;background:var(--accent);color:#fff;padding:.6rem 1rem;border-radius:6px;text-decoration:none}
 section{padding:2rem 0}
 .programs p,.about p{max-width:60ch}
-.site-footer{background:#fafafa;border-top:1px solid #eee;padding:1rem 0;margin-top:2rem;color:var(--muted)}
+.site-footer{background:#fafafa;border-top:1px solid #eee;margin-top:1rem;color:var(--muted)}
 .nonprofit{font-size:.9rem;color:#444}
 
 /* Responsive */
