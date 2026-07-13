@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "target": "ES2023",
+    "module": "none",
+    "lib": ["ES2023", "DOM"]
+  },
+  "include": ["src/js/**/*.js"],
+  "exclude": ["node_modules"]
+}

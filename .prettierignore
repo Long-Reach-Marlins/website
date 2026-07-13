@@ -1,0 +1,8 @@
+# Generated from templates by scripts/build_pages.py
+
+src/*.html
+
+# Binary assets
+
+src/assets/
+src/favicon.ico
