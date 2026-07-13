@@ -1,28 +1,31 @@
 {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "editor.rulers": [250],
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 250,
-    "files.eol": "\n",
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "markdown.validate.enabled": true,
-    "markdownlint.run": "onType",
-    "prettier.requireConfig": false,
-    "python-envs.defaultEnvManager": "ms-python.python:system",
-    "python-envs.pythonProjects": [],
-    "[html]": {
-        "editor.wordWrap": "on"
-    },
-    "[markdown]": {
-        "files.trimTrailingWhitespace": false
-    },
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-    "[powershell]": {
-        "editor.defaultFormatter": "ms-vscode.powershell"
-    }
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.rulers": [250],
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 250,
+  "files.eol": "\n",
+  "files.associations": {
+    ".prettierignore": "ignore"
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "markdown.validate.enabled": true,
+  "markdownlint.run": "onType",
+  "prettier.requireConfig": false,
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.pythonProjects": [],
+  "[html]": {
+    "editor.wordWrap": "on"
+  },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[powershell]": {
+    "editor.defaultFormatter": "ms-vscode.powershell"
+  }
 }

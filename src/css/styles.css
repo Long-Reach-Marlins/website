@@ -1,47 +1,130 @@
 /* Basic responsive styles for Long Reach Marlins */
-:root{
+:root {
   /* Primary accent used for links and buttons. Darkened to improve contrast for accessibility */
-  --accent:#064e44; /* rgb(6,78,68) */
-  --accent-dark:#033b33;
+  --accent: #064e44; /* rgb(6,78,68) */
+  --accent-dark: #033b33;
   /* Link colors: chosen to contrast with both white background and the site's body text color (#111) */
-  --link-color:#0b66c3; /* stronger, saturated blue for clearer contrast */
-  --link-dark:#054a8a;
-  --accent-rgb: 6,78,68;
-  --muted:#666;
+  --link-color: #0b66c3; /* stronger, saturated blue for clearer contrast */
+  --link-dark: #054a8a;
+  --accent-rgb: 6, 78, 68;
+  --muted: #666;
   /* Softer text colors to reduce harsh black; headings slightly darker than body for hierarchy */
   --text-color: #333333;
   --heading-color: #222222;
-  --wrap:1000px;
+  --wrap: 1000px;
 }
-*{box-sizing:border-box}
-*{box-sizing:border-box}
+* {
+  box-sizing: border-box;
+}
+* {
+  box-sizing: border-box;
+}
 /* Always show a vertical scrollbar to avoid layout jump when pages are short */
-html{overflow-y:scroll}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.5;margin:0;color:var(--text-color)}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:1rem}
-.site-header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:40}
-.header-inner{display:flex;align-items:center;gap:1rem}
+html {
+  overflow-y: scroll;
+}
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--text-color);
+}
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 1rem;
+}
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 
 /* Stabilize header height to prevent layout shift between pages */
-.site-header .header-inner{min-height:64px}
-.brand{display:flex;align-items:center;gap:.5rem;text-decoration:none;color:inherit}
-.logo{display:block}
-.org-name{font-weight:600}
-.nav-toggle{display:none;background:none;border:1px solid #ddd;padding:.4rem .6rem;border-radius:6px}
-.main-nav{margin-left:auto}
-.main-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem}
+.site-header .header-inner {
+  min-height: 64px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+.logo {
+  display: block;
+}
+.org-name {
+  font-weight: 600;
+}
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid #ddd;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+}
+.main-nav {
+  margin-left: auto;
+}
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
 /* Nav links should follow the global link treatment for contrast; padding retained for tap targets */
-.main-nav a{text-decoration:none;color:var(--link-color);padding:.4rem .6rem;border-radius:6px;display:inline-block}
+.main-nav a {
+  text-decoration: none;
+  color: var(--link-color);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  display: inline-block;
+}
 
 /* Delineate menu items with a subtle divider for horizontal layout */
-.main-nav li{display:flex;align-items:center}
-.main-nav li + li{margin-left:0.5rem;padding-left:0.75rem;border-left:1px solid #eee}
-
+.main-nav li {
+  display: flex;
+  align-items: center;
+}
+.main-nav li + li {
+  margin-left: 0.5rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid #eee;
+}
 
 /* Global link styles: keep the same color for normal and visited links, and a subtle darker shade on hover/focus */
-a { color: var(--link-color); text-decoration: none; text-decoration-color: var(--link-color); text-underline-offset: 2px; font-weight:500; transition: color .12s ease-in-out; }
-a:visited { color: var(--link-color); }
-a:hover, a:focus { color: var(--link-dark); text-decoration-color: var(--link-dark); text-decoration: underline; }
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  text-decoration-color: var(--link-color);
+  text-underline-offset: 2px;
+  font-weight: 500;
+  transition: color 0.12s ease-in-out;
+}
+a:visited {
+  color: var(--link-color);
+}
+a:hover,
+a:focus {
+  color: var(--link-dark);
+  text-decoration-color: var(--link-dark);
+  text-decoration: underline;
+}
 
 /* Accessible focus ring for keyboard users */
 a:focus-visible {
@@ -51,26 +134,86 @@ a:focus-visible {
 }
 
 /* Use the same subtle shaded background on the legal page to match the index hero */
-.hero h1{font-size:clamp(1.6rem,4vw,2.4rem);margin:.2rem 0}
+.hero h1 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin: 0.2rem 0;
+}
 /* Heading styles: softer color and slightly reduced weight for a gentler appearance */
-h1,h2,h3,h4,h5,h6{color:var(--heading-color);font-weight:600;line-height:1.2}
-.lead{color:var(--muted)}
-.btn{display:inline-block;background:var(--accent);color:#fff;padding:.6rem 1rem;border-radius:6px;text-decoration:none}
-section{padding:2rem 0}
-.programs p,.about p{max-width:60ch}
-.site-footer{background:#fafafa;border-top:1px solid #eee;margin-top:1rem;color:var(--muted)}
-.nonprofit{font-size:.9rem;color:#444}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.lead {
+  color: var(--muted);
+}
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+section {
+  padding: 2rem 0;
+}
+.programs p,
+.about p {
+  max-width: 60ch;
+}
+.site-footer {
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  margin-top: 1rem;
+  color: var(--muted);
+}
+.nonprofit {
+  font-size: 0.9rem;
+  color: #444;
+}
 
 /* Responsive */
-@media (max-width:720px){
-  .main-nav{display:none}
-  .nav-toggle{display:inline-block}
-  .header-inner{padding:.5rem}
-  .wrap{padding:.75rem}
+@media (max-width: 720px) {
+  .main-nav {
+    display: none;
+  }
+  .nav-toggle {
+    display: inline-block;
+  }
+  .header-inner {
+    padding: 0.5rem;
+  }
+  .wrap {
+    padding: 0.75rem;
+  }
 }
 
 /* When nav is open (toggled by JS) */
-.main-nav.open{display:block;position:absolute;left:0;right:0;top:64px;background:#fff;padding:1rem;border-bottom:1px solid #eee}
-.main-nav.open ul{flex-direction:column}
+.main-nav.open {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 64px;
+  background: #fff;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+.main-nav.open ul {
+  flex-direction: column;
+}
 /* In the stacked mobile menu, use top borders instead of left borders for separation */
-.main-nav.open li + li{border-left: none;margin-left:0;padding-left:0;border-top:1px solid #eee;padding-top:.6rem;margin-top:.6rem}
+.main-nav.open li + li {
+  border-left: none;
+  margin-left: 0;
+  padding-left: 0;
+  border-top: 1px solid #eee;
+  padding-top: 0.6rem;
+  margin-top: 0.6rem;
+}

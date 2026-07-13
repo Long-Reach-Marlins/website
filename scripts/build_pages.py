@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import argparse
+import shutil
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -8,7 +10,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE_PATH = ROOT / "templates" / "base.html"
 PAGES_PATH = ROOT / "templates" / "pages"
-OUTPUT_PATH = ROOT / "src"
+SOURCE_PATH = ROOT / "src"
+OUTPUT_PATH = ROOT / "out"
+GENERATED_PAGE_NAMES = frozenset({"index.html", "legal.html", "resources.html"})
 
 
 @dataclass(frozen=True)
@@ -72,35 +76,40 @@ def render_page(template: str, page: Page) -> str:
     return rendered
 
 
+def build_site(output_path: Path) -> None:
+    if output_path.exists():
+        shutil.rmtree(output_path)
+
+    shutil.copytree(
+        SOURCE_PATH,
+        output_path,
+        ignore=lambda _directory, names: GENERATED_PAGE_NAMES.intersection(names),
+    )
+    shutil.copy2(ROOT / "CNAME", output_path / "CNAME")
+
+    template = TEMPLATE_PATH.read_text(encoding="utf-8")
+    for page in PAGES:
+        rendered = render_page(template, page)
+        output_file = output_path / page.filename
+        output_file.write_text(rendered, encoding="utf-8", newline="\n")
+        print(f"Built {output_file.relative_to(ROOT) if output_path == OUTPUT_PATH else page.filename}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build the static HTML pages.")
     parser.add_argument(
         "--check",
         action="store_true",
-        help="Fail if generated pages are missing or out of date.",
+        help="Validate that the site can be built without writing repository output.",
     )
     args = parser.parse_args()
 
-    template = TEMPLATE_PATH.read_text(encoding="utf-8")
-    stale_pages: list[str] = []
-
-    for page in PAGES:
-        rendered = render_page(template, page)
-        output_file = OUTPUT_PATH / page.filename
-
-        if args.check:
-            if not output_file.exists() or output_file.read_text(encoding="utf-8") != rendered:
-                stale_pages.append(page.filename)
-        else:
-            output_file.write_text(rendered, encoding="utf-8", newline="\n")
-            print(f"Built {output_file.relative_to(ROOT)}")
-
-    if stale_pages:
-        print("Out-of-date generated pages: " + ", ".join(stale_pages))
-        return 1
-
     if args.check:
-        print("Generated pages are up to date.")
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            build_site(Path(temporary_directory) / "out")
+        print("Site build validation passed.")
+    else:
+        build_site(OUTPUT_PATH)
 
     return 0
 

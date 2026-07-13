@@ -1,27 +1,28 @@
 {
-    "name": "long-reach-marlins-website",
-    "version": "1.0.0",
-    "private": true,
-    "description": "Static website for Long Reach Marlins, Inc.",
-    "scripts": {
-        "build": "python scripts/build_pages.py",
-        "check:generated": "python scripts/build_pages.py --check",
-        "format": "prettier --write .",
-        "format:check": "prettier --check .",
-        "lint": "pnpm run lint:js && pnpm run lint:markdown",
-        "lint:fix": "pnpm run lint:js -- --fix && pnpm run lint:markdown -- --fix",
-        "lint:js": "eslint .",
-        "lint:markdown": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
-        "check": "pnpm run format:check && pnpm run lint && pnpm run check:generated"
-    },
-    "engines": {
-        "node": ">=24"
-    },
-    "devDependencies": {
-        "@eslint/js": "10.0.1",
-        "eslint": "10.7.0",
-        "globals": "17.7.0",
-        "markdownlint-cli2": "0.23.0",
-        "prettier": "3.9.5"
-    }
+  "name": "long-reach-marlins-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static website for Long Reach Marlins, Inc.",
+  "packageManager": "pnpm@11.10.0",
+  "scripts": {
+    "build": "python scripts/build_pages.py",
+    "check:build": "python scripts/build_pages.py --check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "pnpm run lint:js && pnpm run lint:markdown",
+    "lint:fix": "eslint . --fix && markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\"",
+    "lint:js": "eslint .",
+    "lint:markdown": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
+    "check": "pnpm run format:check && pnpm run lint && pnpm run check:build"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.6.0",
+    "globals": "17.7.0",
+    "markdownlint-cli2": "0.23.0",
+    "prettier": "3.9.4"
+  }
 }

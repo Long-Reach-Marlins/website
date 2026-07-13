@@ -1,7 +1,7 @@
 <#
 start-server.ps1
 
-Simple helper to run a Python HTTP server that serves the ./src folder.
+Simple helper to build the site and serve the ./out folder.
 
 Usage examples:
 # Start in foreground on port 8000 (press Ctrl+C to stop) — this will open your browser by default
@@ -63,7 +63,7 @@ if ($LASTEXITCODE -ne 0) {
     exit 2
 }
 
-$argList = $pythonArgs + @('-m', 'http.server', $Port.ToString(), '--directory', 'src')
+$argList = $pythonArgs + @('-m', 'http.server', $Port.ToString(), '--directory', 'out')
 
 # Determine effective open behavior: -NoOpen wins, then explicit -Open, otherwise default = open
 $shouldOpen = if ($PSBoundParameters.ContainsKey('NoOpen')) { $false } elseif ($PSBoundParameters.ContainsKey('Open')) { $true } else { $true }
