@@ -53,8 +53,17 @@ try {
     Write-Error $_.Exception.Message
     exit 1
 }
+$pythonArgs = if ([System.IO.Path]::GetFileNameWithoutExtension($pythonCmd) -eq 'py') { @('-3') } else { @() }
 
-$argList = @('-3', '-m', 'http.server', $Port.ToString(), '--directory', 'src')
+Write-Output "Building site pages..."
+$buildArgs = $pythonArgs + @('scripts/build_pages.py')
+& $pythonCmd @buildArgs
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "Failed to build site pages."
+    exit 2
+}
+
+$argList = $pythonArgs + @('-m', 'http.server', $Port.ToString(), '--directory', 'src')
 
 # Determine effective open behavior: -NoOpen wins, then explicit -Open, otherwise default = open
 $shouldOpen = if ($PSBoundParameters.ContainsKey('NoOpen')) { $false } elseif ($PSBoundParameters.ContainsKey('Open')) { $true } else { $true }
