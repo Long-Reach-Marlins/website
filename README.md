@@ -8,7 +8,7 @@ The local server and GitHub Pages workflow run this build automatically.
 
 ## Development
 
-Use Node.js 24 and pnpm for repository formatting and linting tools.
+Use Node.js 24 and the pnpm version declared in `package.json` for repository formatting and linting tools. Dependency releases are held for seven days before installation. `pnpm install` also configures the tracked pre-commit hook, which normalizes staged lockfile tarball URLs to `https://registry.npmjs.org/`.
 
 ```powershell
 pnpm install
