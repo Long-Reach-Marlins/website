@@ -1,0 +1,3 @@
+#!/bin/sh
+
+node -e "require('./scripts/lib/pnpm-lock-registry.js').normalizeStagedLockfile()"

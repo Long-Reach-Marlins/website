@@ -3,20 +3,24 @@
   "version": "1.0.0",
   "private": true,
   "description": "Static website for Long Reach Marlins, Inc.",
-  "packageManager": "pnpm@11.10.0",
+  "packageManager": "pnpm@11.16.0",
   "scripts": {
     "build": "python scripts/build_pages.py",
     "check:build": "python scripts/build_pages.py --check",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "hooks:install": "git config core.hooksPath .githooks",
     "lint": "pnpm run lint:js && pnpm run lint:markdown",
     "lint:fix": "eslint . --fix && markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\"",
     "lint:js": "eslint .",
     "lint:markdown": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
-    "check": "pnpm run format:check && pnpm run lint && pnpm run check:build"
+    "prepare": "pnpm run hooks:install",
+    "test": "node --test tests/pnpm-lock-registry.test.js",
+    "check": "pnpm run format:check && pnpm run lint && pnpm test && pnpm run check:build"
   },
   "engines": {
-    "node": ">=24"
+    "node": ">=24",
+    "pnpm": "11.16.0"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
